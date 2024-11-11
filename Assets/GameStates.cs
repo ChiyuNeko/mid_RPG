@@ -27,6 +27,8 @@ namespace GameFSM
                gameManager.State = STATE.GameStart;
                Debug.Log("GameStart");
                gameManager.uIManager.GameLog.text = "";
+               gameManager.uIManager.State.text = "";
+               gameManager.uIManager.Info_UI.text = "";
                gameManager.Init();
                if((gameManager.player[1].WinTimes == 0) && (gameManager.player[0].WinTimes == 0))
                {
@@ -126,7 +128,7 @@ namespace GameFSM
                          gameManager.uIManager.Game_UI.GetComponentInChildren<Text>().text = Defender.PlayerName + " K.O";
                          gameManager.uIManager.GameLog.text += Defender.PlayerName + " K.O\n";
                          Attacker.WinTimes ++;
-                         gameManager.uIManager.ScoreLight[1 + Attacker.WinTimes].GetComponent<Renderer>().material.color = Color.green;
+                         gameManager.uIManager.ScoreLight[Attacker.WinTimes - 1].GetComponent<Renderer>().material.color = Color.green;
                          gameManager.GoToState(new GameEnd(gameManager));
                     }
                     else
@@ -164,7 +166,7 @@ namespace GameFSM
                          gameManager.uIManager.Game_UI.GetComponentInChildren<Text>().text = Defender.PlayerName + " K.O";
                          gameManager.uIManager.GameLog.text += Defender.PlayerName + " K.O\n";
                          Attacker.WinTimes ++;
-                         gameManager.uIManager.ScoreLight[1 + Attacker.WinTimes].GetComponent<Renderer>().material.color = Color.green;
+                         gameManager.uIManager.ScoreLight[Attacker.WinTimes - 1].GetComponent<Renderer>().material.color = Color.green;
                          gameManager.GoToState(new GameEnd(gameManager));
                     }
                     else
