@@ -19,8 +19,10 @@ namespace GameFSM
         private GameStates gameStates;
 
         public STATE State;
+        public File_IO file_IO;
+        public UIManager uIManager;
         public List<Player> player = new List<Player>();
-        
+        public int GameRounds;
         bool Trigger;
         void Start()
         {
@@ -45,9 +47,21 @@ namespace GameFSM
         }
 
         public void Init()
-        {
-            player[0].HP = 10;
-            player[1].HP = 10;
+        {        
+            player[0].PlayerName = file_IO.playerA[0];
+            player[0].HP = int.Parse(file_IO.playerA[1]);
+            player[0].ATK = int.Parse(file_IO.playerA[2]);
+            player[0].LUC = int.Parse(file_IO.playerA[3]);
+
+            player[1].PlayerName = file_IO.playerB[0];
+            player[1].HP = int.Parse(file_IO.playerB[1]);
+            player[1].ATK = int.Parse(file_IO.playerB[2]);
+            player[1].LUC = int.Parse(file_IO.playerB[3]);
+
+            GameRounds = 0;
+
+            return;
         }
+
     }
 }
